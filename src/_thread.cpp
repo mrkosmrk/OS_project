@@ -142,6 +142,8 @@ int _thread::thread_exit()
 
 void _thread::thread_join(thread_t thread)
 {
+	if (thread->isFinished())
+		return;
     _sem::wait(thread->threadsToActivate);
 }
 
